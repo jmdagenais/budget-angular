@@ -1,16 +1,19 @@
-import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Expense } from "@models/expense";
+import { Period } from "@models/period";
 import { Observable } from "rxjs";
 
 import { config } from "../../core/config";
-import { Expense } from "@models/expense";
-import { Period } from "@models/period";
+import { ConfigProvider } from "./../../core/config.provider";
 
 @Injectable()
 export class ExpenseApi {
-  private readonly API_URL = `${config.apiUrl}/expenses`;
+  private readonly API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, configProvider: ConfigProvider) {
+    this.API_URL = configProvider.getConfig().apiUrl + '/expenses';
+  }
 
   getExpenses(period: Period): Observable<Expense[]> {
     return this.http.get<Expense[]>(

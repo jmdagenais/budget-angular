@@ -14,7 +14,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "mock-server": "json-server integration/db.json --routes integration/rewrites.json",
-    "test:integration": "ng test --testMatch **/integration/*.(it).ts",
+    "test:integration": "ng test --testMatch **/integration/*.it.ts",
     "test:pact": "ng test --testMatch **/contract/*.(pact).ts",
     "cypress:open": "cypress open",
     "eslint": "eslint src/**/*.{js,ts}",
